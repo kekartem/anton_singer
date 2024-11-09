@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Antoha MC</title>
+</head>
+<body>
+<div class="container">
+    <div class="key" id="0">
+        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="folded">ОБО МНЕ</div>
+        <div class="opened">
+            <h1>Антон Сверчков</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus unde ullam quia dolore eveniet. Hic, quasi non. Exercitationem incidunt vel qui! Magni similique quod labore nisi perferendis enim voluptates distinctio!</p>
+        </div>
+    </div>
+    <div class="key" id="1">
+        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="folded">УРОКИ ВОКАЛА</div>
+        <div class="opened">
+            <h1>Антон Сверчков</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus unde ullam quia dolore eveniet. Hic, quasi non. Exercitationem incidunt vel qui! Magni similique quod labore nisi perferendis enim voluptates distinctio!</p>
+        </div>
+    </div>
+    <div class="key" id="2">
+        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="folded">АРАНЖИРОВКИ</div>
+        <div class="opened">
+            <h1>Антон Сверчков</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus unde ullam quia dolore eveniet. Hic, quasi non. Exercitationem incidunt vel qui! Magni similique quod labore nisi perferendis enim voluptates distinctio!</p>
+        </div>
+    </div>
+    <div class="key" id="3">
+        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="folded">КОНТАКТЫ</div>
+        <div class="opened">
+            <h1>Антон Сверчков</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus unde ullam quia dolore eveniet. Hic, quasi non. Exercitationem incidunt vel qui! Magni similique quod labore nisi perferendis enim voluptates distinctio!</p>
+        </div>
+    </div>
+        
+    <div class="key" id="4">
+        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="folded">КОНТАКТЫ</div>
+        <div class="opened">
+            <h1>Антон Сверчков</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus unde ullam quia dolore eveniet. Hic, quasi non. Exercitationem incidunt vel qui! Magni similique quod labore nisi perferendis enim voluptates distinctio!</p>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.js"></script>
+<script>
+let keys = document.querySelectorAll('.key')
+let current_el_id = keys[0].id
+let is_moving = false
+let is_full = false
+keys[0].style.width = `${0.6 * parseFloat(window.innerWidth)}px`
+keys[0].querySelector('.folded').style.opacity = 0
+keys[0].querySelector('.opened').style.opacity = 1
+keys[0].querySelector('.btn-open').style.opacity = 1
+for (let i = 1; i < 5; i++) {
+    keys[i].style.width = `${0.1 * parseFloat(window.innerWidth)}px`
+}
+
+
+
+for (let i = 0; i < 5; i++) {
+    keys[i].addEventListener('click', function() {
+        if (current_el_id == keys[i].id) { return }
+        if (is_moving) { return }
+        is_moving = true
+
+        anime({
+            targets: keys[i],
+            width: 0.6 * parseFloat(window.innerWidth),
+            duration: 300,
+            easing: 'linear',
+            complete: function() {
+                current_el_id = keys[i].id
+                is_moving = false
+            }
+        })
+
+        anime({
+            targets: document.getElementById(current_el_id),
+            width: 0.1 * parseFloat(window.innerWidth),
+            duration: 300,
+            easing: 'linear'
+        })
+
+        anime({
+            targets: keys[i].querySelector('.folded'),
+            opacity: 0,
+            duration: 300,
+            easing: 'linear'
+        })
+
+        anime({
+            targets: [keys[i].querySelector('.opened'), keys[i].querySelector('.btn-open')],
+            opacity: 1,
+            duration: 200,
+            delay: 100,
+            easing: 'linear'
+        })
+
+        anime({
+            targets: document.getElementById(current_el_id).querySelector('.folded'),
+            opacity: 1,
+            duration: 200,
+            delay: 100,
+            easing: 'linear'
+        })
+
+        anime({
+            targets: [document.getElementById(current_el_id).querySelector('.opened'), document.getElementById(current_el_id).querySelector('.btn-open')],
+            opacity: 0,
+            duration: 300,
+            easing: 'linear'
+        })
+    })
+
+    keys[i].querySelector('.btn-open').addEventListener('click', function() {
+        if (keys[i].id != current_el_id) { return }
+        if (is_full) {
+            anime({
+                targets: keys[i].querySelector('.opened'),
+                width: 0.6 * parseFloat(window.innerWidth),
+                backgroundColor: 'rgb(0,0,0,0)',
+                duration: 300,
+                easing: 'linear',
+                complete: function() { is_full = false }
+            })
+
+            anime({
+                targets: document.getElementById(current_el_id),
+                width: 0.6 * parseFloat(window.innerWidth),
+                translateX: 0,
+                duration: 300,
+                easing: 'linear'
+            })
+
+            anime({
+                targets: Array.from(document.querySelectorAll('.key')).filter(el => el.id != current_el_id),
+                translateY: 0,
+                duration: 300,
+                opacity: 1,
+                easing: 'linear'
+            })
+            return
+        }
+        
+        anime({
+            targets: keys[i].querySelector('.opened'),
+            width: window.innerWidth,
+            backgroundColor: 'rgb(0,0,0,1)',
+            duration: 300,
+            easing: 'linear',
+            complete: function() { is_full = true }
+        })
+
+        anime({
+            targets: document.getElementById(current_el_id),
+            width: window.innerWidth,
+            translateX: -1 * document.getElementById(current_el_id).getBoundingClientRect().left,
+            duration: 300,
+            easing: 'linear'
+        })
+
+        anime({
+            targets: Array.from(document.querySelectorAll('.key')).filter(el => el.id != current_el_id),
+            translateY: window.innerHeight,
+            duration: 300,
+            opacity: 0,
+            easing: 'linear'
+        })
+    })
+}
+</script>
+</body>
+</html>

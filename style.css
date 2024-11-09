@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Sans+Caption:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0; padding: 0; width: 100vw; height: 100vh;
+    background-color: black;
+}
+
+.container {
+    width: 100%; height: 100%;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.key {
+    height: 100%;
+    position: relative;
+    padding-top: 1em;
+    overflow-x: hidden;
+    flex-shrink: 0;
+}
+
+
+.key::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.4);
+    z-index: -1; /* Keeps it behind the content */
+}
+
+.key:nth-of-type(1)::before {
+    background: url(anton.webp);
+    background-size: 150% cover;
+    background-clip: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.key:nth-of-type(2)::before {
+    background: url(anton1.jpg);
+    background-size: 200% cover;
+    background-clip: border-box;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+.key:nth-of-type(3)::before {
+    background: url(anton2.jpg);
+    background-size: 150% cover;
+    background-clip: border-box;
+    background-position: 70% 50%;
+    background-repeat: no-repeat;
+}
+
+.key:nth-of-type(4)::before {
+    background: url(anton3.jpg);
+    background-size: 200% cover;
+    background-clip: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.key:nth-of-type(5)::before {
+    background: url(anton.webp);
+    background-size: 200% cover;
+    background-clip: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.folded {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    font-family: "PT Sans Caption", serif;
+    width: 100%;
+    height: 100%;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    text-shadow: 0 0 4px rgba(255, 255, 255, .5);
+    user-select: none;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    padding-top: 1em;
+}
+
+.opened {
+    font-family: "PT Sans Caption", serif;
+    width: 60vw;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* overflow-x: hidden; */
+    overflow-y: scroll;
+    color: white;
+    padding: 0 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    z-index: 998
+}
+
+.btn-open {
+    width: max(50px, 4vw);
+    height: max(50px, 4vw);
+    background: rgba(255, 255, 255, .5);
+    position: absolute;
+    background: rgba(255, 255, 255, .2);
+    right: min(2vw, calc((10vw - 50px) / 2));
+    top: calc(50% - max(50px, 4vw) / 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    z-index: 999;
+    transition: transform .1s linear;
+    opacity: 0;
+}
+
+.btn-open:hover {
+    transform: scale(0.95); 
+    transition: transform .1s linear;
+}
+.btn-open:hover img {
+    width: 50%;
+    transition: width .1s linear;
+}
+
+.btn-open img {
+    width: 40%;
+    cursor: pointer;
+    transition: width .1s linear;
+}
+
