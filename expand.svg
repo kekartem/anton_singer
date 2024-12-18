@@ -1,0 +1,179 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<g class="rotating-group group1">
+    <rect x="0" y="32" width="32" height="128" fill="white" />
+    <rect x="32" y="0" width="128" height="32" fill="white" />
+    <path d="M 16 32 A 16 16 0 0 1 32 16" stroke="white" fill="transparent" stroke-width="32" />
+    <rect x="16" y="16" width="32" height="245" fill="white"  transform="rotate(315 32 32)">
+        <animate 
+            attributeName="height" 
+            from="245" 
+            to="0" 
+            dur="0.1s" 
+            fill="freeze" 
+            begin="indefinite"
+            class="anim-shrink" />
+        <animate 
+            attributeName="height" 
+            from="0" 
+            to="245" 
+            dur="0.1s" 
+            fill="freeze" 
+            begin="indefinite"
+            class="anim-grow" />
+    </rect>
+
+    
+
+    <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="0 100 100" 
+        to="180 100 100" 
+        dur="0.3s" 
+        fill="freeze" 
+        begin="indefinite" 
+        class="anim-open" />
+
+        <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="180 100 100" 
+        to="0 100 100" 
+        dur="0.3s" 
+        fill="freeze" 
+        begin="indefinite" 
+        class="anim-close" />
+</g>
+
+<g class="rotating-group group2">
+    <rect x="480" y="32" width="32" height="128" fill="white" />
+    <rect x="352" y="0" width="128" height="32" fill="white" />
+    <path d="M 480 16 A 16 16 0 0 1 496 32" stroke="white" fill="transparent" stroke-width="32" />
+    <rect x="464" y="16" width="32" height="245" fill="white"  transform="rotate(45 480 32)">
+        <animate 
+            attributeName="height" 
+            from="245" 
+            to="0" 
+            dur="0.1s" 
+            fill="freeze" 
+            begin="indefinite"
+            class="anim-shrink" />
+        <animate 
+            attributeName="height" 
+            from="0" 
+            to="245" 
+            dur="0.1s" 
+            fill="freeze" 
+            begin="indefinite"
+            class="anim-grow" />
+    </rect>
+
+    <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="0 412 100" 
+        to="180 412 100" 
+        dur="0.3s" 
+        fill="freeze" 
+        begin="indefinite"
+        class="anim-open" />
+    
+    <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="180 412 100" 
+        to="0 412 100" 
+        dur="0.3s" 
+        fill="freeze" 
+        begin="indefinite"
+        class="anim-close" />
+</g>
+
+<g class="rotating-group group3">
+    <rect x="0" y="352" width="32" height="128" fill="white" />
+    <rect x="32" y="480" width="128" height="32" fill="white" />
+    <path d="M 32 496 A 16 16 0 0 1 16 480" stroke="white" fill="transparent" stroke-width="32" />
+    <rect x="16" y="464" width="32" height="245" fill="white" transform="rotate(225 32 480)">
+        <animate 
+            attributeName="height" 
+            from="245" 
+            to="0" 
+            dur="0.1s" 
+            fill="freeze" 
+            begin="indefinite"
+            class="anim-shrink" />
+        <animate 
+            attributeName="height" 
+            from="0" 
+            to="245" 
+            dur="0.1s" 
+            fill="freeze" 
+            begin="indefinite"
+            class="anim-grow" />
+    </rect>
+
+    <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="0 100 412" 
+        to="180 100 412" 
+        dur="0.3s" 
+        fill="freeze" 
+        begin="indefinite" 
+        class="anim-open" />
+
+    <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="180 100 412" 
+        to="0 100 412" 
+        dur="0.3s" 
+        fill="freeze" 
+        begin="indefinite" 
+        class="anim-close" />
+</g>
+
+<g class="rotating-group group4">
+    <rect x="480" y="352" width="32" height="128" fill="white" />
+    <rect x="352" y="480" width="128" height="32" fill="white" />
+    <path d="M 496 480 A 16 16 0 0 1 480 496" stroke="white" fill="transparent" stroke-width="32" />
+    <rect x="464" y="464" width="32" height="245" fill="white" transform="rotate(135 480 480)">
+        <animate 
+            attributeName="height" 
+            from="245" 
+            to="0" 
+            dur="0.1s" 
+            fill="freeze" 
+            begin="indefinite"
+            class="anim-shrink" />
+        <animate 
+            attributeName="height" 
+            from="0" 
+            to="245" 
+            dur="0.1s" 
+            fill="freeze" 
+            begin="indefinite"
+            class="anim-grow" />
+    </rect>
+
+    <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="0 412 412" 
+        to="180 412 412" 
+        dur="0.3s" 
+        fill="freeze" 
+        begin="indefinite" 
+        class="anim-open"  />
+
+    <animateTransform 
+        attributeName="transform" 
+        type="rotate" 
+        from="180 412 412" 
+        to="0 412 412" 
+        dur="0.3s" 
+        fill="freeze" 
+        begin="indefinite" 
+        class="anim-close"  />
+</g>
+</svg>

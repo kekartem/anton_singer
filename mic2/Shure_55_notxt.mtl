@@ -1,0 +1,46 @@
+# Blender MTL File: 'Shure_55.blend'
+# Material Count: 4
+
+newmtl metal
+Ns 10.0
+Ka 0.3 0.3 0.3
+Kd 0.0 0.0 0.0
+Ks 0.6 0.6 0.6
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Map_Kd Texture_Diffuse.png
+
+newmtl metal_2
+Ns 10.0
+Ka 0.3 0.3 0.3
+Kd 0.0 0.0 0.0
+Ks 0.4 0.4 0.4
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Map_Kd Texture_Diffuse.png
+
+newmtl metal_steel
+Ns 10.0
+Ka 0.3 0.3 0.3
+Kd 0.0 0.0 0.0
+Ks 0.4 0.4 0.4
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Map_Kd Texture_Diffuse.png
+
+newmtl setka
+Ns 10.0
+Ka 0.3 0.3 0.3
+Kd 0.0 0.0 0.0
+Ks 0.4 0.4 0.4
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Map_Kd Texture_Diffuse.png

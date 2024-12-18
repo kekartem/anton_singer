@@ -38,7 +38,7 @@ body {
 
 .key:nth-of-type(1)::before {
     background: url(anton.webp);
-    background-size: 150% cover;
+    background-size: 100% cover;
     background-clip: border-box;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,7 +46,7 @@ body {
 
 .key:nth-of-type(2)::before {
     background: url(anton1.jpg);
-    background-size: 200% cover;
+    background-size: 100% cover;
     background-clip: border-box;
     background-position: top center;
     background-repeat: no-repeat;
@@ -54,7 +54,7 @@ body {
 
 .key:nth-of-type(3)::before {
     background: url(anton2.jpg);
-    background-size: 150% cover;
+    background-size: 100% cover;
     background-clip: border-box;
     background-position: 70% 50%;
     background-repeat: no-repeat;
@@ -62,7 +62,7 @@ body {
 
 .key:nth-of-type(4)::before {
     background: url(anton3.jpg);
-    background-size: 200% cover;
+    background-size: 100% cover;
     background-clip: border-box;
     background-position: center;
     background-repeat: no-repeat;
@@ -70,7 +70,7 @@ body {
 
 .key:nth-of-type(5)::before {
     background: url(anton.webp);
-    background-size: 200% cover;
+    background-size: 100% cover;
     background-clip: border-box;
     background-position: center;
     background-repeat: no-repeat;
@@ -127,7 +127,6 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    cursor: pointer;
     user-select: none;
     -webkit-user-drag: none;
     z-index: 999;
@@ -139,14 +138,77 @@ body {
     transform: scale(0.95); 
     transition: transform .1s linear;
 }
-.btn-open:hover img {
+
+.btn-open:hover object {
     width: 50%;
     transition: width .1s linear;
 }
 
-.btn-open img {
+.btn-open object {
     width: 40%;
-    cursor: pointer;
     transition: width .1s linear;
+    aspect-ratio: 1 / 1;
 }
 
+.btn-open object img {
+    width: 100%;
+}
+
+.btn-open-overlay {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    background: transparent
+}
+
+
+.group1 {
+    animation-name: rotate;
+    animation-duration: .5s;
+    transform-origin: 100px 100px;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+}
+
+.group2 {
+    animation-name: rotate;
+    animation-duration: .5s;
+    transform-origin: 412px 100px;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+}
+
+.group3 {
+    animation-name: rotate;
+    animation-duration: .5s;
+    transform-origin: 100px 412px;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+}
+
+.group4 {
+    animation-name: rotate;
+    animation-duration: .5s;
+    transform-origin: 412px 412px;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-play-state: paused;
+}
+
+.btn-open:hover .group1 {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }

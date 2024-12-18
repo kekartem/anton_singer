@@ -9,7 +9,12 @@
 <body>
 <div class="container">
     <div class="key" id="0">
-        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="btn-open" data-open="1">
+            <object type="image/svg+xml" data="expand.svg">
+                <img src="full-screen1.png" alt="Fallback">
+            </object>
+            <div class="btn-open-overlay"></div>
+        </div>
         <div class="folded">ОБО МНЕ</div>
         <div class="opened">
             <h1>Антон Сверчков</h1>
@@ -17,7 +22,12 @@
         </div>
     </div>
     <div class="key" id="1">
-        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="btn-open" data-open="1">
+            <object type="image/svg+xml" data="expand.svg">
+                <img src="expand.svg" alt="Фолбэк">
+            </object>
+            <div class="btn-open-overlay"></div>
+        </div>
         <div class="folded">УРОКИ ВОКАЛА</div>
         <div class="opened">
             <h1>Антон Сверчков</h1>
@@ -25,7 +35,12 @@
         </div>
     </div>
     <div class="key" id="2">
-        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="btn-open" data-open="1">
+            <object type="image/svg+xml" data="expand.svg">
+                <img src="expand.svg" alt="Фолбэк">
+            </object>
+            <div class="btn-open-overlay"></div>
+        </div>
         <div class="folded">АРАНЖИРОВКИ</div>
         <div class="opened">
             <h1>Антон Сверчков</h1>
@@ -33,7 +48,12 @@
         </div>
     </div>
     <div class="key" id="3">
-        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="btn-open" data-open="1">
+            <object type="image/svg+xml" data="expand.svg">
+                <img src="expand.svg" alt="Фолбэк">
+            </object>
+            <div class="btn-open-overlay"></div>
+        </div>
         <div class="folded">КОНТАКТЫ</div>
         <div class="opened">
             <h1>Антон Сверчков</h1>
@@ -42,7 +62,12 @@
     </div>
         
     <div class="key" id="4">
-        <div class="btn-open"><img src="full-screen1.png" alt=""></div>
+        <div class="btn-open" data-open="1">
+            <object type="image/svg+xml" data="expand.svg">
+                <img src="expand.svg" alt="Фолбэк">
+            </object>
+            <div class="btn-open-overlay"></div>
+        </div>
         <div class="folded">КОНТАКТЫ</div>
         <div class="opened">
             <h1>Антон Сверчков</h1>
@@ -76,7 +101,7 @@ for (let i = 0; i < 5; i++) {
             targets: keys[i],
             width: 0.6 * parseFloat(window.innerWidth),
             duration: 300,
-            easing: 'linear',
+            easing: 'easeInQuad',
             complete: function() {
                 current_el_id = keys[i].id
                 is_moving = false
@@ -87,7 +112,7 @@ for (let i = 0; i < 5; i++) {
             targets: document.getElementById(current_el_id),
             width: 0.1 * parseFloat(window.innerWidth),
             duration: 300,
-            easing: 'linear'
+            easing: 'easeInQuad'
         })
 
         anime({
@@ -129,7 +154,7 @@ for (let i = 0; i < 5; i++) {
                 width: 0.6 * parseFloat(window.innerWidth),
                 backgroundColor: 'rgb(0,0,0,0)',
                 duration: 300,
-                easing: 'linear',
+                easing: 'easeInQuad',
                 complete: function() { is_full = false }
             })
 
@@ -138,7 +163,7 @@ for (let i = 0; i < 5; i++) {
                 width: 0.6 * parseFloat(window.innerWidth),
                 translateX: 0,
                 duration: 300,
-                easing: 'linear'
+                easing: 'easeInQuad'
             })
 
             anime({
@@ -146,7 +171,7 @@ for (let i = 0; i < 5; i++) {
                 translateY: 0,
                 duration: 300,
                 opacity: 1,
-                easing: 'linear'
+                easing: 'easeInQuad'
             })
             return
         }
@@ -156,7 +181,7 @@ for (let i = 0; i < 5; i++) {
             width: window.innerWidth,
             backgroundColor: 'rgb(0,0,0,1)',
             duration: 300,
-            easing: 'linear',
+            easing: 'easeInQuad',
             complete: function() { is_full = true }
         })
 
@@ -165,7 +190,7 @@ for (let i = 0; i < 5; i++) {
             width: window.innerWidth,
             translateX: -1 * document.getElementById(current_el_id).getBoundingClientRect().left,
             duration: 300,
-            easing: 'linear'
+            easing: 'easeInQuad'
         })
 
         anime({
@@ -173,10 +198,38 @@ for (let i = 0; i < 5; i++) {
             translateY: window.innerHeight,
             duration: 300,
             opacity: 0,
-            easing: 'linear'
+            easing: 'easeInQuad'
         })
     })
 }
+
+
+let trigger_blocks = document.querySelectorAll('.btn-open');
+
+// Получаем анимации
+trigger_blocks.forEach(tr => {
+    tr.querySelector('.btn-open-overlay').addEventListener('mouseover', () => {
+        let animations = tr.querySelector('object').contentDocument.querySelectorAll('.anim-shrink')
+        animations.forEach(anim => anim.beginElement());
+    })
+    tr.querySelector('.btn-open-overlay').addEventListener('mouseout', () => {
+        let animations = tr.querySelector('object').contentDocument.querySelectorAll('.anim-grow')
+        animations.forEach(anim => anim.beginElement());
+    })
+    tr.querySelector('.btn-open-overlay').addEventListener('click', () => {
+        if (tr.dataset.open == 1) {
+            let animations = tr.querySelector('object').contentDocument.querySelectorAll('.anim-open')
+            animations.forEach(anim => anim.beginElement());
+            tr.dataset.open = 0
+        } else {
+            let animations = tr.querySelector('object').contentDocument.querySelectorAll('.anim-close')
+            animations.forEach(anim => anim.beginElement());
+            tr.dataset.open = 1
+        }
+        
+    });
+})
+
 </script>
 </body>
 </html>
